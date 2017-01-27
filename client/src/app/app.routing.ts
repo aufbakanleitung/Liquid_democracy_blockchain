@@ -9,7 +9,7 @@ const appRoutes: Routes = [
   {path: 'things', component: ThingsComponent, canActivate: [AuthGuard]},
 
   // otherwise redirect to login
-  {path: '**', redirectTo: 'login'}
+  {path: '**', redirectTo: "login"}
 ];
 
 export const appRoutingProviders: any[] = [];
