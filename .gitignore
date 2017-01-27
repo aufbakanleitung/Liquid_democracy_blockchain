@@ -2,7 +2,6 @@
 node_modules/*
 client/node_modules/*
 client/src/app/**/*.js
-server/**
 /.idea
 src/us.blockchain.ibm.com.cert
 logs/*
@@ -15,7 +14,5 @@ typings
 .baseDir.ts
 tscommand*
 client/assets/node_modules/*
-/client/semantic/
-/client/semantic.json
 src/build-chaincode/vendor
 resources/blockchain
