@@ -1,6 +1,6 @@
 applications:
-- name: APPNAME-server
-  host: APPNAME-api
+- name: LIQUID-DEMOCRACY-server
+  host: LIQUID-DEMOCRACY-api
   path: server
   memory: 512M
   instances: 1
@@ -12,4 +12,4 @@ applications:
   memory: 64M
   buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
 services:
-- BLOCKCHAINSERVICENAME
+- liquid_democrazy_1

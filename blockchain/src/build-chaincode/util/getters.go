@@ -16,31 +16,44 @@ func GetCurrentBlockchainUser(stub shim.ChaincodeStubInterface) (entities.User, 
 	return GetUser(stub, string(userIDAsBytes))
 }
 
-func GetThingsByUserID(stub shim.ChaincodeStubInterface, userID string) ([]string, error) {
-	thingsIndex, err := GetIndex(stub, ThingsIndexName)
+func GetAllPolls(stub shim.ChaincodeStubInterface) ([]entities.Poll, error) {
+	pollsIndex, err := GetIndex(stub, PollsIndexName)
 	if err != nil {
-		return []string{}, errors.New("Unable to retrieve thingsIndex, reason: " + err.Error())
+		return []entities.Poll{}, errors.New("Could not retrieve pollIndex, reason: " + err.Error())
 	}
 
-	thingIDs := []string{}
-	for _, thingID := range thingsIndex {
-		thingAsBytes, err := stub.GetState(thingID)
+	var polls []entities.Poll
+	for _, pollID := range pollsIndex {
+		pollAsBytes, err := stub.GetState(pollID)
 		if err != nil {
-			return []string{}, errors.New("Could not retrieve thing for ID " + thingID + " reason: " + err.Error())
+			return []entities.Poll{}, errors.New("Could not retrieve poll with ID: " + pollID + ", reason: " + err.Error())
 		}
 
-		var thing entities.Thing
-		err = json.Unmarshal(thingAsBytes, &thing)
+		var poll entities.Poll
+		err = json.Unmarshal(pollAsBytes, &poll)
 		if err != nil {
-			return []string{}, errors.New("Error while unmarshalling thingAsBytes, reason: " + err.Error())
+			return []entities.Poll{}, errors.New("Error while unmarshalling poll, reason: " + err.Error())
 		}
 
-		if thing.UserID == userID {
-			thingIDs = append(thingIDs, thing.ThingID)
-		}
+		polls = append(polls, poll)
 	}
 
-	return thingIDs, nil
+	return polls, nil
+}
+
+func GetPollByID(stub shim.ChaincodeStubInterface, pollID string) (entities.Poll, error) {
+	pollAsBytes, err := stub.GetState(pollID)
+	if err != nil {
+		return entities.Poll{}, errors.New("Could not retrieve poll for ID " + pollID + " reason: " + err.Error())
+	}
+
+	var poll entities.Poll
+	err = json.Unmarshal(pollAsBytes, &poll)
+	if err != nil {
+		return entities.Poll{}, errors.New("Error while unmarshalling pollAsBytes, reason: " + err.Error())
+	}
+
+	return poll, nil
 }
 
 func GetUser(stub shim.ChaincodeStubInterface, username string) (entities.User, error) {

@@ -1,26 +1,33 @@
 import {Container} from 'typedi';
 import {Get, Post, JsonController, Param, Body, Req, UseBefore} from 'routing-controllers';
 import {JSONWebToken} from '../../utils/JSONWebToken';
-import {Thing} from '../../entities/thing.model';
+import {Poll} from '../../entities/poll.model';
 import {UserAuthenticatorMiddleware} from '../../middleware/UserAuthenticatorMiddleware';
 import {BlockchainClient} from '../../blockchain/client/blockchainClient';
 
-@JsonController('/things')
+@JsonController('/polls')
 @UseBefore(UserAuthenticatorMiddleware)
-export class ThingsController {
+export class PollsController {
     private blockchainClient: BlockchainClient = Container.get(BlockchainClient);
 
-    @Get('/:id')
-    public getThingsByUserID(@Param('id') userID: string, @Req() request: any): any {
+    @Get('/')
+    public getAllPolls(@Req() request: any): any {
         let enrollmentID = new JSONWebToken(request).getUserID();
 
-        return this.blockchainClient.query('getThingsByUserID', [userID], enrollmentID);
+        return this.blockchainClient.query('getAllPolls', [], enrollmentID);
+    }
+
+    @Get('/:id')
+    public getPollByID(@Param('id') pollID: string, @Req() request: any): any {
+        let enrollmentID = new JSONWebToken(request).getUserID();
+
+        return this.blockchainClient.query('getPollByID', [pollID], enrollmentID);
     }
 
     @Post('/')
-    public post(@Body() thing: Thing, @Req() request: any): any {
+    public post(@Body() poll: Poll, @Req() request: any): any {
         let enrollmentID = new JSONWebToken(request).getUserID();
 
-        return this.blockchainClient.invoke('createThing', [JSON.stringify(thing)], enrollmentID);
+        return this.blockchainClient.invoke('createPoll', [JSON.stringify(poll)], enrollmentID);
     }
 }

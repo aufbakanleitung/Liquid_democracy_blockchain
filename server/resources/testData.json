@@ -4,24 +4,128 @@
       "userID": "john",
       "username": "john",
       "password": "passw0rd",
+      "address": "Groningen",
+      "email": "john@blockmail.com",
+      "phoneNumber": "0031 6 999999999",
+      "expertiseDomains": [
+        "finance",
+        "agriculture",
+        "energy"
+      ],
+      "domainDelegations": [
+        {
+          "domain": "trading",
+          "user": "mary"
+        }
+      ],
+      "votes": [],
       "attributes": [
         {
           "name": "userID",
           "value": "john"
         }
       ]
-    }
-  ],
-  "things": [
-    {
-      "thingID": "1",
-      "userID": "john",
-      "someProperty": "8716948000003"
     },
     {
-      "thingID": "2",
-      "userID": "john",
-      "someProperty": "124914266456"
+      "userID": "mary",
+      "username": "mary",
+      "password": "passw0rd",
+      "address": "Amsterdam",
+      "email": "mary@chainmail.com",
+      "phoneNumber": "0031 6 11111111",
+      "expertiseDomains": [
+        "finance",
+        "energy",
+        "trading"
+      ],
+      "domainDelegations": [
+        {
+          "domain": "agriculture",
+          "user": "bill"
+        }
+      ],
+      "votes": [],
+      "attributes": [
+        {
+          "name": "userID",
+          "value": "mary"
+        }
+      ]
+    },
+    {
+      "userID": "bill",
+      "username": "bill",
+      "password": "passw0rd",
+      "address": "Brussels",
+      "email": "bill@chainmail.com",
+      "phoneNumber": "0031 6 12345678",
+      "expertiseDomains": [
+        "tax",
+        "trading",
+        "agriculture"
+      ],
+      "domainDelegations": [
+        {
+          "domain": "energy",
+          "user": "john"
+        }
+      ],
+      "votes": [],
+      "attributes": [
+        {
+          "name": "userID",
+          "value": "bill"
+        }
+      ]
+    }
+  ],
+  "polls": [
+    {
+      "pollID": "1234",
+      "title": "Full Renewable Energy",
+      "description": "100% Renewables in 2020",
+      "creationDate": 1486655353000,
+      "dueDate": 1486911600000,
+      "domain": "energy",
+      "options": [
+        {
+          "option": "yes",
+          "votes": ["5"]
+        },
+        {
+          "option": "no",
+          "votes": []
+        }
+      ]
+    },
+    {
+      "pollID": "9876",
+      "title": "Next President",
+      "description": "bla",
+      "creationDate": 1486655353000,
+      "dueDate": 1486911600000,
+      "options": [
+        {
+          "option": "Valentin",
+          "votes": []
+        },
+        {
+          "option": "Albert-Martijn",
+          "votes": []
+        },
+        {
+          "option": "Herman",
+          "votes": []
+        },
+        {
+          "option": "Giorgos",
+          "votes": []
+        },
+        {
+          "option": "Nikhil",
+          "votes": []
+        }
+      ]
     }
   ]
 }

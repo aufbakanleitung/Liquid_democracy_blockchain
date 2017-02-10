@@ -8,6 +8,7 @@ import (
 	"os"
 	"build-chaincode/util"
 	"build-chaincode/entities"
+	"reflect"
 )
 
 var logger = shim.NewLogger("fabric-boilerplate")
@@ -36,20 +37,20 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		return nil, t.addUser(stub, args[0], args[1])
 	} else if functionName == "addTestdata" {
 		return nil, t.addTestdata(stub, args[0])
-	} else if functionName == "createThing" {
-		thingAsJSON := args[0]
+	} else if functionName == "createPoll" {
+		pollAsJson := args[0]
 
-		var thing entities.Thing
-		if err := json.Unmarshal([]byte(thingAsJSON), &thing); err != nil {
-			return nil, errors.New("Error while unmarshalling thing, reason: " + err.Error())
+		var poll entities.Poll
+		if err := json.Unmarshal([]byte(pollAsJson), &poll); err != nil {
+			return nil, errors.New("Error while unmarshalling poll, reason: " + err.Error())
 		}
 
-		thingAsBytes, err := json.Marshal(thing);
+		pollAsBytes, err := json.Marshal(poll);
 		if err != nil {
-			return nil, errors.New("Error marshalling thing, reason: " + err.Error())
+			return nil, errors.New("Error marshalling poll, reason: " + err.Error())
 		}
 
-		util.StoreObjectInChain(stub, thing.ThingID, util.ThingsIndexName, thingAsBytes)
+		util.StoreObjectInChain(stub, poll.PollID, util.PollsIndexName, pollAsBytes)
 
 		return nil, nil
 	}
@@ -87,13 +88,20 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 		}
 
 		return t.authenticateAsUser(stub, user, args[1]), nil
-	} else if functionName == "getThingsByUserID" {
-		thingsByUserID, err := util.GetThingsByUserID(stub, args[0])
+	} else if functionName == "getAllPolls" {
+		polls, err := util.GetAllPolls(stub)
 		if err != nil {
-			return nil, errors.New("could not retrieve things by user id: " + args[0] + ", reason: " + err.Error())
+			return nil, errors.New("could not retrieve all polls, reason: " + err.Error())
 		}
 
-		return thingsByUserID, nil
+		return polls, nil
+	} else if functionName == "getPollByID" {
+		pollByID, err := util.GetPollByID(stub, args[0])
+		if err != nil {
+			return nil, errors.New("could not retrieve polls with id: " + args[0] + ", reason: " + err.Error())
+		}
+
+		return pollByID, nil
 	}
 
 	return nil, errors.New("Received unknown query function name")
@@ -161,13 +169,13 @@ func (t *Chaincode) addTestdata(stub shim.ChaincodeStubInterface, testDataAsJson
 		}
 	}
 
-	for _, thing := range testData.Things {
-		thingAsBytes, err := json.Marshal(thing);
+	for _, poll := range testData.Polls {
+		pollAsBytes, err := json.Marshal(poll);
 		if err != nil {
-			return errors.New("Error marshalling testThing, reason: " + err.Error())
+			return errors.New("Error marshalling testPolls, reason: " + err.Error())
 		}
 
-		err = util.StoreObjectInChain(stub, thing.ThingID, util.ThingsIndexName, thingAsBytes)
+		err = util.StoreObjectInChain(stub, poll.PollID, util.PollsIndexName, pollAsBytes)
 		if err != nil {
 			return errors.New("error in storing object, reason: " + err.Error())
 		}
@@ -181,7 +189,7 @@ func (t *Chaincode) addTestdata(stub shim.ChaincodeStubInterface, testDataAsJson
 //======================================================================================================================
 
 func (t *Chaincode) authenticateAsUser(stub shim.ChaincodeStubInterface, user entities.User, passwordHash string) (entities.UserAuthenticationResult) {
-	if user == (entities.User{}) {
+	if reflect.DeepEqual(user, entities.User{}) {
 		fmt.Println("User not found")
 		return entities.UserAuthenticationResult{
 			User: user,

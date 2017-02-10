@@ -30,7 +30,7 @@
     ],
     "files": [
         "src/api/v1/AuthController.ts",
-        "src/api/v1/ThingsController.ts",
+      "src/api/v1/PollsController.ts",
         "src/blockchain/Blockchain.ts",
         "src/blockchain/BlockchainBluemix.ts",
         "src/blockchain/BlockchainFactory.ts",

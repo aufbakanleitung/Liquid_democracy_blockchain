@@ -24,10 +24,13 @@ export class TestData {
   }
 
   private writeTestDataToLedger(testData: any): Promise<any>  {
-    testData.users = testData.users.map(
-        (user: any) => new User(user.userID, user.password, user.username)
-    );
+    let users: User[] = [];
+    testData.users.forEach((user: any) => {
+      users.push(new User(user.userID, user.password, user.username, user.address, user.email, user.phoneNumber, user.expertiseDomains, user.domainDelegations, user.votes));
+    });
+    testData.users = users;
 
+    console.log('Test Data : ', testData.users);
     const functionName = 'addTestdata';
     const args         = [JSON.stringify(testData)];
     const enrollmentId = 'WebAppAdmin';
