@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar ng-controller="MyCtrl">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <button ion-button class="profile" (click)="gotoProfile()">
+      <ion-icon name="person"></ion-icon>
+    </button>
+    <ion-title class="toolbar-title">Polls</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      {{item.title}}
+      <div item-right>
+        {{item.category}}
+      </div>
+    </button>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+</ion-content>

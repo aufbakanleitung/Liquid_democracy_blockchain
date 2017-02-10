@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar ng-controller="MyCtrl">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <button ion-button class="profile" (click)="gotoProfile()">
+      <ion-icon name="person"></ion-icon>
+    </button>
+    <ion-title class="toolbar-title">Vote for Poll {{pollId}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+ <div>
+    <p>
+        <h2>{{poll.title}}</h2>
+        <p>{{poll.description}}</p>
+    {{poll.category}} - {{poll.endDate | date}}
+    <div>
+        <ion-list radio-group [(ngModel)]="voting">
+          <ion-item *ngFor="let option of poll.options">
+            <ion-label>{{option}}</ion-label>
+            <ion-radio value="{{option}}"></ion-radio>
+          </ion-item>
+        </ion-list>
+    </div>
+    <div class="voting_wrapper_vote_page">
+        <span>
+            <button id="vote" ion-button color="primary" (click)="finalVote()" [disabled]="voted">Vote</button>
+        </span>
+    </div>
+  </div>
+</ion-content>
