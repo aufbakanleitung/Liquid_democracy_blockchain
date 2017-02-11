@@ -5,7 +5,6 @@ export declare class ItemDetailsPage {
     navParams: NavParams;
     private pollService;
     selectedItem: any;
-    navCtrl: NavController;
     constructor(navCtrl: NavController, navParams: NavParams, pollService: PollService);
     getOne(id: string): void;
     vote(event: any, item: any): void;

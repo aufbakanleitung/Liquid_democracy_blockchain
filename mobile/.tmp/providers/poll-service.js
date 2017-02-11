@@ -12,7 +12,6 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-// import {RequestOptions, Headers} from 'angular2/http';
 import { AuthService } from './auth-service';
 /*
  Generated class for the PollService provider.
@@ -30,7 +29,7 @@ var PollService = (function () {
     PollService.prototype.getList = function () {
         var _this = this;
         var token = this.authService.getToken();
-        console.log(this.authenticationHeaders);
+        //console.log(this.authenticationHeaders);
         return new Promise(function (resolve, reject) {
             _this.http
                 .get('http://localhost:8080/api/v1/polls', { headers: _this.authenticationHeaders }).subscribe(function (data) {
@@ -46,10 +45,23 @@ var PollService = (function () {
         });
     };
     PollService.prototype.getOne = function (id) {
+        var _this = this;
+        var token = this.authService.getToken();
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this.http
-            .get('http://localhost:8080/api/v1/poll/' + id + '?token=' + this.authService.getToken(), { headers: headers }).map(function (res) { return res.json(); });
+        return new Promise(function (resolve, reject) {
+            _this.http
+                .get('http://localhost:8080/api/v1/polls/' + id, { headers: _this.authenticationHeaders }).subscribe(function (data) {
+                var dataJSON = JSON.parse(data._body);
+                console.log(dataJSON);
+                if (dataJSON != null) {
+                }
+                else {
+                    return reject("error");
+                }
+                return resolve(dataJSON);
+            });
+        });
     };
     PollService.prototype.vote = function (id, option) {
         var headers = new Headers();
