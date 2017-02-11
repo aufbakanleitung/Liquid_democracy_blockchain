@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es5",
+    "outDir": "/Users/Valentin/Documents/workspace/liquid_democracy/liquid_democracy/mobile/.tmp"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  },
+  "include": [
+    "/Users/Valentin/Documents/workspace/liquid_democracy/liquid_democracy/mobile/src/app/main.dev.ts",
+    "/Users/Valentin/Documents/workspace/liquid_democracy/liquid_democracy/mobile/src/**/*.d.ts"
+  ]
+}
