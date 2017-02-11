@@ -8,33 +8,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
+import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import { RequestOptions, Headers } from 'angular2/http';
+import 'rxjs/add/operator/toPromise';
+// import {RequestOptions, Headers} from 'angular2/http';
 import { AuthService } from './auth-service';
 /*
-  Generated class for the PollService provider.
+ Generated class for the PollService provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
+ See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+ for more info on providers and Angular 2 DI.
+ */
 var PollService = (function () {
     function PollService(http, authService) {
         this.http = http;
         this.authService = authService;
         console.log('Hello PollService Provider');
+        this.authenticationHeaders = authService.createAuthorizationHeader();
     }
     PollService.prototype.getList = function () {
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this.http
-            .get('http://localhost:8080/api/v1/poll' + '?token=' + this.authService.getToken(), {}, new RequestOptions({ headers: headers })).map(function (res) { return res.json(); });
+        var _this = this;
+        var token = this.authService.getToken();
+        console.log(this.authenticationHeaders);
+        return new Promise(function (resolve, reject) {
+            _this.http
+                .get('http://localhost:8080/api/v1/polls', { headers: _this.authenticationHeaders }).subscribe(function (data) {
+                var dataJSON = JSON.parse(data._body);
+                console.log(dataJSON);
+                if (dataJSON != null) {
+                }
+                else {
+                    return reject("error");
+                }
+                return resolve(dataJSON);
+            });
+        });
     };
     PollService.prototype.getOne = function (id) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http
-            .get('http://localhost:8080/api/v1/poll/' + id + '?token=' + this.authService.getToken(), {}, new RequestOptions({ headers: headers })).map(function (res) { return res.json(); });
+            .get('http://localhost:8080/api/v1/poll/' + id + '?token=' + this.authService.getToken(), { headers: headers }).map(function (res) { return res.json(); });
     };
     PollService.prototype.vote = function (id, option) {
         var headers = new Headers();
@@ -45,7 +60,7 @@ var PollService = (function () {
             token: this.authService.getToken(),
             pollId: id,
             option: option
-        }, new RequestOptions({ headers: headers }));
+        }, { headers: headers });
     };
     return PollService;
 }());

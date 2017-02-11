@@ -11,7 +11,7 @@
     "module": "es2015",
     "moduleResolution": "node",
     "target": "es5",
-    "outDir": "/Users/Valentin/Documents/workspace/liquid_democracy/liquid_democracy/mobile/.tmp"
+    "outDir": "/Users/Valentin/Documents/workspace/liquid_democracy_2/mobile/.tmp"
   },
   "exclude": [
     "node_modules"
@@ -21,7 +21,7 @@
     "rewriteTsconfig": false
   },
   "include": [
-    "/Users/Valentin/Documents/workspace/liquid_democracy/liquid_democracy/mobile/src/app/main.dev.ts",
-    "/Users/Valentin/Documents/workspace/liquid_democracy/liquid_democracy/mobile/src/**/*.d.ts"
+    "/Users/Valentin/Documents/workspace/liquid_democracy_2/mobile/src/app/main.dev.ts",
+    "/Users/Valentin/Documents/workspace/liquid_democracy_2/mobile/src/**/*.d.ts"
   ]
 }
