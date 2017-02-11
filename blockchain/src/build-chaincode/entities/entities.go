@@ -17,14 +17,14 @@ type User struct {
 	UserID            string        		`json:"userID"`
 	Username          string        		`json:"username"`
 	Password          string        		`json:"password"`
-	Salt              string       		`json:"salt"`
+	Salt              string       			`json:"salt"`
 	Hash              string        		`json:"hash"`
-	Address           string       		`json:"address"`
-	Email             string       		`json:"email"`
-	PhoneNumber       string       		`json:"phoneNumber"`
-	ExpertiseDomains  []string 		`json:"expertiseDomains"`
-	DomainDelegations []DomainDelegation	`json:"domainDelegations"`
-	Votes             []Vote  		`json:"votes"`
+	Address           string       			`json:"address"`
+	Email             string       			`json:"email"`
+	PhoneNumber       string       			`json:"phoneNumber"`
+	ExpertiseDomains  []string 			`json:"expertiseDomains"`
+	DomainDelegations []DomainDelegation		`json:"domainDelegations"`
+	Votes             []Vote  			`json:"votes"`
 }
 
 type Vote struct {

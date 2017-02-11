@@ -17,17 +17,14 @@ var LoginPage = (function () {
         this.authService = authService;
         this.username = 'bill';
         this.password = 'passw0rd';
-        this.nav = nav;
+        // this.nav = nav;
     }
-    LoginPage.prototype.loginPage = function () {
-        console.log('Login button pressed XXX');
-        this.nav.setRoot(ListPage);
-    };
-    LoginPage.prototype.login = function () {
+    LoginPage.prototype.login = function (event, item) {
         var _this = this;
-        console.log('login pressed xxzxx', this.username, this.password);
-        //this.nav.setRoot(ListPage);
-        this.authService.login(this.username, this.password).subscribe(function (res) {
+        console.log('login pressed : ', this.username, this.password);
+        this.authService.login(this.username, this.password)
+            .then(function (res) {
+            console.log(res);
             if (res) {
                 console.log('logged in successfully');
                 _this.nav.setRoot(ListPage);

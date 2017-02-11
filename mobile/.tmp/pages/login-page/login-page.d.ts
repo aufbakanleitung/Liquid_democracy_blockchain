@@ -5,8 +5,6 @@ export declare class LoginPage {
     private authService;
     username: string;
     password: string;
-    nav: NavController;
     constructor(nav: NavController, authService: AuthService);
-    loginPage(): void;
-    login(): void;
+    login(event: any, item: any): void;
 }

@@ -10,20 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { ProfilePage } from '../profile-page/profile-page';
 import { AuthService } from '../../providers/auth-service';
+import { NavController } from 'ionic-angular';
 import { NavParams, ToastController } from 'ionic-angular/index';
 var DelegatePage = (function () {
-    function DelegatePage(authService, navParams, toastCtrl) {
+    function DelegatePage(authService, navParams, toastCtrl, navCtrl) {
         this.authService = authService;
         this.navParams = navParams;
         this.toastCtrl = toastCtrl;
+        this.navCtrl = navCtrl;
         this.loadUsers();
         this.pollId = navParams.get('pollId');
     }
     DelegatePage.prototype.loadUsers = function () {
-        var _this = this;
-        this.authService.getAllUsers().subscribe(function (users) {
-            _this.users = users;
+        /*
+        this.authService.getAllUsers().subscribe(users => {
+          this.users = users
         });
+        */
     };
     DelegatePage.prototype.delegate = function () {
         var _this = this;
@@ -47,6 +50,6 @@ DelegatePage = __decorate([
     Component({
         templateUrl: 'delegate-page.html'
     }),
-    __metadata("design:paramtypes", [AuthService, NavParams, ToastController])
+    __metadata("design:paramtypes", [AuthService, NavParams, ToastController, NavController])
 ], DelegatePage);
 export { DelegatePage };

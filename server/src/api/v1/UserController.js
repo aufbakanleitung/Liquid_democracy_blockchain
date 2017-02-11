@@ -1,0 +1,45 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var routing_controllers_1 = require('routing-controllers');
+var JSONWebToken_1 = require('../../utils/JSONWebToken');
+var UserAuthenticatorMiddleware_1 = require('../../middleware/UserAuthenticatorMiddleware');
+var blockchainClient_1 = require('../../blockchain/client/blockchainClient');
+var typedi_1 = require('typedi');
+var UserController = (function () {
+    function UserController() {
+        this.blockchainClient = typedi_1.Container.get(blockchainClient_1.BlockchainClient);
+    }
+    UserController.prototype.getAllUsers = function (request) {
+        console.log('getAllUsers is requested');
+        var enrollmentID = new JSONWebToken_1.JSONWebToken(request).getUserID();
+        return this.blockchainClient.query('getAllUsers', [], enrollmentID);
+    };
+    UserController.prototype.getUserByID = function (userID, request) {
+        console.log('getUser is requested');
+        var enrollmentID = new JSONWebToken_1.JSONWebToken(request).getUserID();
+        return this.blockchainClient.query('getUserByID', [userID], enrollmentID);
+    };
+    __decorate([
+        routing_controllers_1.Get('/'),
+        __param(0, routing_controllers_1.Req())
+    ], UserController.prototype, "getAllUsers", null);
+    __decorate([
+        routing_controllers_1.Get('/:id'),
+        __param(0, routing_controllers_1.Param('id')),
+        __param(1, routing_controllers_1.Req())
+    ], UserController.prototype, "getUserByID", null);
+    UserController = __decorate([
+        routing_controllers_1.JsonController('/users'),
+        routing_controllers_1.UseBefore(UserAuthenticatorMiddleware_1.UserAuthenticatorMiddleware)
+    ], UserController);
+    return UserController;
+}());
+exports.UserController = UserController;

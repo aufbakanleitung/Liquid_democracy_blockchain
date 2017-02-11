@@ -27,7 +27,6 @@ export class PollsController {
     @Post('/')
     public createPoll(@Body() poll: Poll, @Req() request: any): any {
         let enrollmentID = new JSONWebToken(request).getUserID();
-        console.log(poll);
 
         return this.blockchainClient.invoke('createPoll', [JSON.stringify(poll)], enrollmentID);
     }

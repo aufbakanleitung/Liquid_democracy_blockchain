@@ -17,17 +17,10 @@ export class ListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private pollService: PollService) {
     this.categories = ['Finance', 'Energy', 'Security', 'Agriculture', 'Transport'];
-    this.subcategories = ['Pool1'];
-    this.subcategories = ['Pool2'];
-    this.subcategories = ['Pool3'];
-    this.subcategories = ['Pool4'];
-    this.subcategories = ['Pool5'];
-
-      /*
-    this.pollService.getList().subscribe(res => {
-      this.items = res || [];
+    this.pollService.getList()
+        .then(res => {
+            this.items = res || [];
     });
-    */
 
   }
 
