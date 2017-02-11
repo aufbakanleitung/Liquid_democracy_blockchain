@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar ng-controller="MyCtrl">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <button ion-button class="profile" (click)="gotoProfile()">
+      <ion-icon name="person"></ion-icon>
+    </button>
+    <ion-title class="toolbar-title">History</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngFor="let poll of polls">
+        <ion-card-header> Transport referendum 7th June 2016</ion-card-header>
+        <ion-card-content>
+            Results: vote passed with 70%
+            <br>
+            Your vote:
+            <ion-list>
+                <div *ngFor="let delegation of delegations">
+                    <ion-item>
+                        <ion-thumbnail item-left>
+                            <img src="img/thumbnail-totoro.png">
+                        </ion-thumbnail>
+                        <h2>Valentin</h2>
+                        <p>Security | Economy</p>
+                    </ion-item>
+                    <ion-item>
+                        <h1>No</h1>
+                    </ion-item>
+                    <div class="cic-arrow"></div>
+                </div>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header> Agriculture tax 15th August 2015</ion-card-header>
+        <ion-card-content>
+           <img src="https://milesbakerclarke.files.wordpress.com/2012/11/scrn10.jpg"/>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header> Foreign affairs 30th September 2014</ion-card-header>
+        <ion-card-content>
+            <img src="https://milesbakerclarke.files.wordpress.com/2012/11/scrn10.jpg"/>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header> Immigration 1st March 2014</ion-card-header>
+        <ion-card-content>
+            <img src="https://milesbakerclarke.files.wordpress.com/2012/11/scrn10.jpg"/>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
