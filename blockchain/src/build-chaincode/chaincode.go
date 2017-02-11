@@ -85,19 +85,33 @@ func (t *Chaincode) Query(stub shim.ChaincodeStubInterface, functionName string,
 
 func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionName string, args []string) (interface{}, error) {
 	if functionName == "getUser" {
-		user, err := util.GetUser(stub, args[0])
+		user, err := util.GetUserByID(stub, args[0])
 		if err != nil {
 			return nil, err
 		}
 
 		return user, nil
 	} else if functionName == "authenticateAsUser" {
-		user, err := util.GetUser(stub, args[0])
+		user, err := util.GetUserByID(stub, args[0])
 		if err != nil {
 			logger.Infof("User with id %v not found.", args[0])
 		}
 
 		return t.authenticateAsUser(stub, user, args[1]), nil
+	} else if functionName == "getAllUsers" {
+		users, err := util.GetAllUsers(stub)
+		if err != nil {
+			return nil, errors.New("could not retrieve all users, reason: " + err.Error())
+		}
+
+		return users, nil
+	} else if functionName == "getUserByID" {
+		user, err := util.GetUserByID(stub, args[0])
+		if err != nil {
+			return nil, errors.New("could not retrieve user with id: " + args[0] + ", reason: " + err.Error())
+		}
+
+		return user, nil
 	} else if functionName == "getAllPolls" {
 		polls, err := util.GetAllPolls(stub)
 		if err != nil {

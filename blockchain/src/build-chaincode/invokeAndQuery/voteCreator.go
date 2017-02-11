@@ -24,7 +24,7 @@ func CreateVotesForPoll(stub shim.ChaincodeStubInterface, poll entities.Poll) er
 
 					delegation = append(delegation, userDelegation.UserID)
 
-					delegatedUser, err := util.GetUser(stub, userDelegation.UserID)
+					delegatedUser, err := util.GetUserByID(stub, userDelegation.UserID)
 					if err != nil {
 						return err
 					}
