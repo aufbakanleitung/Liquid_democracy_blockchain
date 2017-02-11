@@ -3,7 +3,6 @@ import {Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-// import {RequestOptions, Headers} from 'angular2/http';
 import {AuthService} from './auth-service';
 
 /*
@@ -24,7 +23,7 @@ export class PollService {
 
     getList(): Promise<any> {
         let token = this.authService.getToken();
-        console.log(this.authenticationHeaders);
+        //console.log(this.authenticationHeaders);
         return new Promise((resolve, reject) => {
             this.http
                 .get('http://localhost:8080/api/v1/polls', {headers: this.authenticationHeaders}
@@ -43,14 +42,25 @@ export class PollService {
     }
 
     getOne(id: string) {
+        let token = this.authService.getToken();
         let headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-        return this.http
-            .get(
-                'http://localhost:8080/api/v1/poll/' + id + '?token=' + this.authService.getToken(),
-                {headers: headers}
-            ).map(res => res.json());
+        return new Promise((resolve, reject) => {
+            this.http
+                .get('http://localhost:8080/api/v1/polls/' + id, {headers: this.authenticationHeaders}
+                ).subscribe((data: any) => {
+                let dataJSON = JSON.parse(data._body);
+                console.log(dataJSON);
+                if (dataJSON != null) {
+
+                } else {
+                    return reject("error");
+                }
+                return resolve(dataJSON);
+            });
+        });
+
     }
 
     vote(id: string, option: string) {

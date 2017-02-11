@@ -16,7 +16,7 @@ import { ProfilePage } from '../profile-page/profile-page';
 })
 export class ItemDetailsPage {
   selectedItem: any;
-  navCtrl: NavController;
+  //navCtrl: NavController;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private pollService: PollService) {
     this.selectedItem = {};
@@ -24,10 +24,12 @@ export class ItemDetailsPage {
   }
 
   getOne(id: string){
-    this.pollService.getOne(id).subscribe(res => {
-      this.selectedItem = res || {};
+    this.pollService.getOne(id)
+        .then(res => {
+          this.selectedItem = res || {};
     });
   }
+
   
   vote(event, item){
     this.navCtrl.push(VotePage, {

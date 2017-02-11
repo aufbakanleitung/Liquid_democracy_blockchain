@@ -14,6 +14,7 @@ import { VotePage } from '../vote-page/vote-page';
 import { DelegatePage } from '../delegate-page/delegate-page';
 import { ProfilePage } from '../profile-page/profile-page';
 var ItemDetailsPage = (function () {
+    //navCtrl: NavController;
     function ItemDetailsPage(navCtrl, navParams, pollService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -23,7 +24,8 @@ var ItemDetailsPage = (function () {
     }
     ItemDetailsPage.prototype.getOne = function (id) {
         var _this = this;
-        this.pollService.getOne(id).subscribe(function (res) {
+        this.pollService.getOne(id)
+            .then(function (res) {
             _this.selectedItem = res || {};
         });
     };

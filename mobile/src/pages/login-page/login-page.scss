@@ -9,3 +9,78 @@
 .list-ios > .item-block:last-child .item-inner {
     border-bottom: 0.55px solid #c8c7cc;
 }
+
+.sign-in {
+    width: 100%;
+}
+
+.header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios{
+    background-color: #ff9966;
+    border: none;
+}
+ion-title.toolbar-title .toolbar-title{
+    color: #fff;
+    font-weight: normal;
+    font-size: 1.4em;
+}
+
+#sign-in button{
+    width: 100%;
+    background-color: #ff9966;
+}
+
+.logo-img{
+    width: 100%;
+    height: auto;
+}
+.login-page{
+    margin-left: 10%;
+    position: absolute;
+    bottom: 16%;
+    width: 90%;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+.username_icon, .password_icon{
+    float: left;
+    position: absolute;
+    margin-top: 8px;
+}
+
+.username_icon:after{
+    content: url(../../assets/icon/icon_user.svg);
+    width: 25px;
+    height: 25px;
+}
+
+.password_icon:after{
+    content: url(../../assets/icon/icon_password.svg);
+    width: 25px;
+    height: 25px;
+}
+.ion-page.show-page{
+    background-color: #f0f0f0;
+}
+.list-ios > .item-block:first-child, .list-ios > .item-block:last-child .item-inner{
+    border: none;
+    background-color: #f0f0f0;
+}
+.item-ios.item-block .item-inner{
+    padding-right: 0px;
+}
+.item-input ion-input, .item-input ion-textarea{
+    background-color: #fff;
+}
+div.separator{
+    display: block;
+    clear: both;
+    height: 20px;
+}
+.list-ios > .item-block:last-child{
+    border-bottom: 0.55px solid #c8c7cc;
+}
+ion-footer{
+    bottom: 15px;
+}

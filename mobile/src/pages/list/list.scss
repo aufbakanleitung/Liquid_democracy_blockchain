@@ -49,3 +49,14 @@ button.profile {
 .toolbar-title{
     width: auto;
 }
+
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default{
+    color: #fff;
+}
+.search_button:before{
+    content: url("../../assets/icon/icon_search.svg");
+}
+.button-ios{
+    background-color: transparent;
+    float: right;
+}
