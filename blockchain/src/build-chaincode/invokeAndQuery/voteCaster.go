@@ -4,7 +4,6 @@ import (
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	"build-chaincode/util"
 	"encoding/json"
-	"fmt"
 )
 
 func CastVoteForPoll(stub shim.ChaincodeStubInterface, pollID string, option string) error {
