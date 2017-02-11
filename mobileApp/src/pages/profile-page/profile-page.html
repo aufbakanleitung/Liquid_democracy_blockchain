@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar ng-controller="MyCtrl">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title class="toolbar-title">Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="profile-container" padding>
+    <div class="profile-content">
+        <ion-item class="username">
+            <ion-label floating>Name</ion-label>
+            <ion-input type="text" value="{{profile.firstName}} {{profile.lastName}}"></ion-input>
+        </ion-item>
+        <img class="profile-image" src="../../assets/avatars/albert.jpg" />
+        <h2>{{profile.userId}}</h2>
+        <ion-item class="username">
+            <ion-label floating>Categories</ion-label>
+            <ion-select floating [(ngModel)]="profile.category" multiple="true">
+                <ion-option>Finance</ion-option>
+                <ion-option>Energy</ion-option>
+                <ion-option>Security</ion-option>
+                <ion-option>Agriculture</ion-option>
+                <ion-option>Transport</ion-option>
+                <ion-option>Foreign Affairs</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item class="username">
+            <ion-label floating>Bio</ion-label>
+            <ion-textarea type="text" value="{{profile.bio}}" rows="10">
+            </ion-textarea>
+        </ion-item>
+    </div>
+</ion-content>

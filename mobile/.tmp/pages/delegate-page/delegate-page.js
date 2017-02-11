@@ -48,7 +48,7 @@ var DelegatePage = (function () {
 }());
 DelegatePage = __decorate([
     Component({
-        templateUrl: 'delegate-page.html'
+        templateUrl: 'delegatepage.html'
     }),
     __metadata("design:paramtypes", [AuthService, NavParams, ToastController, NavController])
 ], DelegatePage);
