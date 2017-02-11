@@ -14,22 +14,20 @@ type TestDataElement interface {
 }
 
 type User struct {
-	TestDataElement        `json:"-"`
-	UserID           	string        		`json:"userID"`
-	Username         	string        		`json:"username"`
-	Password         	string        		`json:"password"`
-	Salt             	string       		`json:"salt"`
-	Hash             	string        		`json:"hash"`
-	Address             	string       		`json:"address"`
-	Email             	string       		`json:"email"`
-	PhoneNumber             string       		`json:"phoneNumber"`
-	ExpertiseDomains 	[]string 		`json:"expertiseDomains"`
-	DomainDelegation  	[]DomainDelegation	`json:"domainDelegations"`
-	Votes            	[]Vote  		`json:"votes"`
+	UserID            string        		`json:"userID"`
+	Username          string        		`json:"username"`
+	Password          string        		`json:"password"`
+	Salt              string       		`json:"salt"`
+	Hash              string        		`json:"hash"`
+	Address           string       		`json:"address"`
+	Email             string       		`json:"email"`
+	PhoneNumber       string       		`json:"phoneNumber"`
+	ExpertiseDomains  []string 		`json:"expertiseDomains"`
+	DomainDelegations []DomainDelegation	`json:"domainDelegations"`
+	Votes             []Vote  		`json:"votes"`
 }
 
 type Vote struct {
-	TestDataElement        `json:"-"`
 	VoteID 			string			`json:"voteID"`
 	PollID      		string			`json:"pollID"`
 	DelegatedTo 		[]string		`json:"delegatedTo"`
@@ -38,11 +36,10 @@ type Vote struct {
 
 type DomainDelegation struct {
 	Domain 			string 			`json:"domain"`
-	User 			string			`json:"user"`
+	UserID 			string			`json:"userID"`
 }
 
 type Poll struct {
-	TestDataElement        `json:"-"`
 	PollID			string 			`json:"pollID"`
 	Title			string 			`json:"title"`
 	Description		string 			`json:"description"`
