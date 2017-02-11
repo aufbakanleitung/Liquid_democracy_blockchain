@@ -15,10 +15,11 @@ export class LoginPage {
     constructor(public nav: NavController, private authService: AuthService) {
         this.nav = nav;
     }
-    loginPage(){
-        console.log('Login button pressed XXX');
-        this.nav.setRoot(ListPage);
-    }
+    // loginPage(){
+    //     console.log('Login button pressed XXX');
+    //
+    //     this.nav.setRoot(ListPage);
+    // }
     login() {
         console.log('login pressed xxzxx', this.username, this.password);
         //this.nav.setRoot(ListPage);
