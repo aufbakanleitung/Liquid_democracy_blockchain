@@ -4,7 +4,6 @@ import {JSONWebToken} from '../../utils/JSONWebToken';
 import {Poll} from '../../entities/poll.model';
 import {UserAuthenticatorMiddleware} from '../../middleware/UserAuthenticatorMiddleware';
 import {BlockchainClient} from '../../blockchain/client/blockchainClient';
-import {User} from "../../entities/user.model";
 
 @JsonController('/polls')
 @UseBefore(UserAuthenticatorMiddleware)
@@ -13,6 +12,7 @@ export class PollsController {
 
     @Get('/')
     public getAllPolls(@Req() request: any): any {
+        console.log('Get all polls, bitches');
         let enrollmentID = new JSONWebToken(request).getUserID();
 
         return this.blockchainClient.query('getAllPolls', [], enrollmentID);
@@ -39,4 +39,3 @@ export class PollsController {
         return this.blockchainClient.invoke('vote', [JSON.stringify(poll)], enrollmentID);
     }
 }
-

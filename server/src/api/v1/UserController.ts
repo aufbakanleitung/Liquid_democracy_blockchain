@@ -1,31 +1,28 @@
-/**
- * Created by hermanvanderveer on 11/02/2017.
- */
-import {Container} from 'typedi';
-import {Get, Post, JsonController, Param, Body, Req, UseBefore} from 'routing-controllers';
+import {Get, JsonController, Param, Req, UseBefore} from 'routing-controllers';
 import {JSONWebToken} from '../../utils/JSONWebToken';
-import {Poll} from '../../entities/poll.model';
 import {UserAuthenticatorMiddleware} from '../../middleware/UserAuthenticatorMiddleware';
 import {BlockchainClient} from '../../blockchain/client/blockchainClient';
-import {User} from "../../entities/user.model";
-
+import {Container} from 'typedi';
 
 @JsonController('/user')
 @UseBefore(UserAuthenticatorMiddleware)
 export class UserController {
+    private blockchainClient: BlockchainClient = Container.get(BlockchainClient);
 
     @Get('/')
     public getAllUsers(@Req() request: any): any {
+        // console.log('getAllUsers is requested');
         let enrollmentID = new JSONWebToken(request).getUserID();
 
-        return this.blockchainClient.query('GetAllUsers', [], enrollmentID);
+        // return JSON.stringify('Get all users, bitches');
+        return this.blockchainClient.query('getAllUsers', [], enrollmentID);
     }
 
     @Get('/:id')
-    public getUser(@Param('id') pollID: string, @Req() request: any): any {
+    public getUserByID(@Param('id') userID: string, @Req() request: any): any {
+        console.log('getUser is requested');
         let enrollmentID = new JSONWebToken(request).getUserID();
 
-        return this.blockchainClient.query('GetUser', [User], enrollmentID);
+        return this.blockchainClient.query('getUserByID', [userID], enrollmentID);
     }
-
 }
