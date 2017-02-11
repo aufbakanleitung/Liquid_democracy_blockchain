@@ -57,9 +57,9 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		util.StoreObjectInChain(stub, poll.PollID, util.PollsIndexName, pollAsBytes)
 
 		return nil, nil
-	} else if functionName == "voteForPoll" {
+	} else if functionName == "castVoteByPoll" {
 
-
+		invokeAndQuery.CastVoteForPoll(stub, args[0], args[1])
 
 		return nil, nil
 	}

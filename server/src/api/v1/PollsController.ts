@@ -33,9 +33,10 @@ export class PollsController {
     }
 
     @Post('/:id/vote')
-    public vote(@Body() option: string, @Req() request: any): any {
+    public castVoteByPoll(@Param('id') pollID: string, @Body() option: any, @Req() request: any): any {
         let enrollmentID = new JSONWebToken(request).getUserID();
+        console.log(option);
 
-        return this.blockchainClient.invoke('vote', [option], enrollmentID);
+        return this.blockchainClient.invoke('castVoteByPoll', [pollID, option.option], enrollmentID);
     }
 }
