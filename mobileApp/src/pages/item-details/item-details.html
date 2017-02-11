@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar ng-controller="MyCtrl">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <button ion-button class="profile" (click)="gotoProfile()">
+      <ion-icon name="person"></ion-icon>
+    </button>
+    <ion-title class="toolbar-title">Poll Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header class="poll-title"> {{selectedItem.title}} </ion-card-header>
+        <ion-card-content> <b>{{selectedItem.description}}</b>  </ion-card-content>
+    </ion-card>
+
+    <div class="voting_wrapper">
+        <span>
+            <button ion-button color="primary" (click)="vote()">Vote</button>
+        </span>
+         <span>
+            <button ion-button color="primary" (click)="delegate()">Delegate</button>
+        </span>
+    </div>
+
+</ion-content>

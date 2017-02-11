@@ -1,0 +1,51 @@
+.list-page {}
+
+//Login page
+.logo-img {
+    width: 100px;
+    margin: auto;
+    margin-top: 40%;
+}
+
+.login-page {
+    width: 80%;
+    margin: auto;
+    .username {
+        margin: auto;
+        width: 80%;
+    }
+    .password {
+        margin: auto;
+        width: 80%;
+    }
+}
+
+#sign-in {
+    text-align: center;
+    button {
+        margin: 0 auto;
+        width: 60%;
+    }
+}
+.voting_wrapper {
+    button{
+        width: 60%;
+    }
+}
+
+button.profile {
+    float: right;
+}
+.poll-title {
+    text-align: center;
+}
+
+#delegate {
+    width: 50%;
+}
+#vote {
+    width: 50%;
+}
+.toolbar-title{
+    width: auto;
+}
