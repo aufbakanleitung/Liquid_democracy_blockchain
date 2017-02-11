@@ -4,7 +4,6 @@ import (
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	"build-chaincode/util"
 	"build-chaincode/entities"
-	"fmt"
 	"encoding/json"
 	"reflect"
 )
@@ -25,7 +24,7 @@ func CreateVotesForPoll(stub shim.ChaincodeStubInterface, poll entities.Poll) er
 
 					delegation = append(delegation, userDelegation.UserID)
 
-					delegatedUser, err := util.GetUser(stub, userDelegation.UserID)
+					delegatedUser, err := util.GetUserByID(stub, userDelegation.UserID)
 					if err != nil {
 						return err
 					}
@@ -62,7 +61,7 @@ func CreateVotesForPoll(stub shim.ChaincodeStubInterface, poll entities.Poll) er
 		if err != nil {
 			return err
 		}
-		
+
 		stub.PutState(user.UserID, userAsBytes)
 	}
 

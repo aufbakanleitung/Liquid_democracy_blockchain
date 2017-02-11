@@ -9,8 +9,6 @@ import {AuthService} from '../../providers/auth-service';
 export class LoginPage {
     username: string = 'bill';
     password: string = 'passw0rd';
-
-    constructor(public nav: NavController, private authService: AuthService) {
         // this.nav = nav;
     }
 

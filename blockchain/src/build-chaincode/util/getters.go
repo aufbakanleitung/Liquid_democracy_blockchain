@@ -13,7 +13,7 @@ func GetCurrentBlockchainUser(stub shim.ChaincodeStubInterface) (entities.User, 
 		return entities.User{}, errors.New("Could not retrieve user by certificate. Reason: " + err.Error())
 	}
 
-	return GetUser(stub, string(userIDAsBytes))
+	return GetUserByID(stub, string(userIDAsBytes))
 }
 
 func GetAllPolls(stub shim.ChaincodeStubInterface) ([]entities.Poll, error) {
@@ -56,7 +56,7 @@ func GetPollByID(stub shim.ChaincodeStubInterface, pollID string) (entities.Poll
 	return poll, nil
 }
 
-func GetUser(stub shim.ChaincodeStubInterface, username string) (entities.User, error) {
+func GetUserByID(stub shim.ChaincodeStubInterface, username string) (entities.User, error) {
 	userAsBytes, err := stub.GetState(username)
 	if err != nil {
 		return entities.User{}, errors.New("Could not retrieve information for this user")
