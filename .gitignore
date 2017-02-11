@@ -17,3 +17,4 @@ client/assets/node_modules/*
 src/build-chaincode/vendor
 resources/blockchain
 node_modules/
+mobile-old/
