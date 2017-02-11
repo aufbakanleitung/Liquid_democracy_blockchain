@@ -15,7 +15,7 @@
       "domainDelegations": [
         {
           "domain": "trading",
-          "user": "mary"
+          "userID": "mary"
         }
       ],
       "votes": [],
@@ -41,7 +41,7 @@
       "domainDelegations": [
         {
           "domain": "agriculture",
-          "user": "bill"
+          "userID": "bill"
         }
       ],
       "votes": [],
@@ -67,7 +67,7 @@
       "domainDelegations": [
         {
           "domain": "energy",
-          "user": "john"
+          "userID": "john"
         }
       ],
       "votes": [],

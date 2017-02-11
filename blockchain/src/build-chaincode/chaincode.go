@@ -9,6 +9,7 @@ import (
 	"build-chaincode/util"
 	"build-chaincode/entities"
 	"reflect"
+	"build-chaincode/invokeAndQuery"
 )
 
 var logger = shim.NewLogger("fabric-boilerplate")
@@ -49,6 +50,8 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		if err != nil {
 			return nil, errors.New("Error marshalling poll, reason: " + err.Error())
 		}
+
+		invokeAndQuery.CreateVotesForPoll(stub, poll)
 
 		util.StoreObjectInChain(stub, poll.PollID, util.PollsIndexName, pollAsBytes)
 
@@ -179,6 +182,8 @@ func (t *Chaincode) addTestdata(stub shim.ChaincodeStubInterface, testDataAsJson
 		if err != nil {
 			return errors.New("error in storing object, reason: " + err.Error())
 		}
+
+		invokeAndQuery.CreateVotesForPoll(stub, poll)
 	}
 
 	return nil
