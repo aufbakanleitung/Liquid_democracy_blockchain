@@ -25,9 +25,17 @@ export class PollsController {
     }
 
     @Post('/')
-    public post(@Body() poll: Poll, @Req() request: any): any {
+    public createPoll(@Body() poll: Poll, @Req() request: any): any {
         let enrollmentID = new JSONWebToken(request).getUserID();
+        console.log(poll);
 
         return this.blockchainClient.invoke('createPoll', [JSON.stringify(poll)], enrollmentID);
+    }
+
+    @Post('/:id/vote')
+    public vote(@Body() option: string, @Req() request: any): any {
+        let enrollmentID = new JSONWebToken(request).getUserID();
+
+        return this.blockchainClient.invoke('vote', [option], enrollmentID);
     }
 }

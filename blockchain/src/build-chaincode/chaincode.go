@@ -40,23 +40,30 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 		return nil, t.addTestdata(stub, args[0])
 	} else if functionName == "createPoll" {
 		pollAsJson := args[0]
+		fmt.Println("poll as bytes  " + string(pollAsJson))
 
 		var poll entities.Poll
 		if err := json.Unmarshal([]byte(pollAsJson), &poll); err != nil {
 			return nil, errors.New("Error while unmarshalling poll, reason: " + err.Error())
 		}
 
+		invokeAndQuery.CreateVotesForPoll(stub, poll)
+
 		pollAsBytes, err := json.Marshal(poll);
 		if err != nil {
 			return nil, errors.New("Error marshalling poll, reason: " + err.Error())
 		}
 
-		invokeAndQuery.CreateVotesForPoll(stub, poll)
-
 		util.StoreObjectInChain(stub, poll.PollID, util.PollsIndexName, pollAsBytes)
 
 		return nil, nil
+	} else if functionName == "voteForPoll" {
+
+
+
+		return nil, nil
 	}
+
 
 	return nil, errors.New("Received unknown invoke function name")
 }
