@@ -1,0 +1,53 @@
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import {PollService} from '../../providers/poll-service';
+import {AuthService} from '../../providers/auth-service';
+
+/*
+  Generated class for the List page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
+@Component({
+  selector: 'page-list',
+  templateUrl: 'list.html',
+  providers: [PollService, AuthService]
+})
+export class ListPage {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pollService: PollService) {
+    this.categories = ['Finance', 'Energy', 'Security', 'Agriculture', 'Transport'];
+    this.pollService.getList()
+      .then(res => {
+        this.items = res || [];
+      });
+
+  }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ListPage');
+  }
+
+  selectedItem: any;
+  categories: string[];
+  items: Array<{title: string, category: string}>;
+
+  itemTapped(event, item) {
+    // this.navCtrl.push(ItemDetailsPage, {
+    //   id: item.id
+    // });
+  }
+
+  MyCtrl($scope, $ionicHistory) {
+    $scope.myGoBack = function() {
+      console.log('dsadas');
+    };
+  }
+
+  gotoProfile(event, item){
+    // this.navCtrl.push(ProfilePage, {
+    //   item: item
+    // });
+  }
+
+}
