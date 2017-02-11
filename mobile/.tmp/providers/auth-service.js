@@ -9,14 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import { Headers, RequestOptions } from 'angular2/http';
+import 'rxjs/add/operator/toPromise';
+import { Headers } from '@angular/http';
 /*
-  Generated class for the AuthService provider.
+ Generated class for the AuthService provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
+ See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+ for more info on providers and Angular 2 DI.
+ */
 var AuthService = (function () {
     function AuthService(http) {
         this.http = http;
@@ -31,26 +33,30 @@ var AuthService = (function () {
             token: this.getToken(),
             pollId: pollId,
             actualVoter: userId
-        }, new RequestOptions({ headers: headers }));
+        }, { headers: headers });
     };
     AuthService.prototype.login = function (username, password) {
         var _this = this;
         var headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        return this.http
-            .post('http://localhost:8080/api/v1/login', { username: username, password: password }, new RequestOptions({ headers: headers }))
-            .map(function (res) { return res.json(); })
-            .map(function (res) {
-            if (res.authenticated) {
-                localStorage.setItem('token', res.token);
-                _this.loggedIn = true;
-                _this.currentUser = res.user;
-                console.log('logged in', res);
-            }
-            else {
-                console.log('something went wrong', res); //TODO?
-            }
-            return res.authenticated;
+        headers.append('Content-Type', 'application/json');
+        return new Promise(function (resolve, reject) {
+            _this.http
+                .post('http://localhost:8080/api/v1/login', { username: username, password: password }, { headers: headers })
+                .subscribe(function (data) {
+                var dataJSON = JSON.parse(data._body);
+                console.log("data ", dataJSON);
+                if (dataJSON.success) {
+                    localStorage.setItem('token', dataJSON.token);
+                    _this.loggedIn = true;
+                    _this.currentUser = dataJSON.user;
+                    console.log('logged in', dataJSON.user);
+                }
+                else {
+                    console.log('something went wrong', dataJSON);
+                    return reject('err');
+                }
+                return resolve(dataJSON.success);
+            });
         });
     };
     AuthService.prototype.getAllUsers = function () {
@@ -58,10 +64,17 @@ var AuthService = (function () {
         var headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http
-            .get('http://localhost:8080/api/v1/user?token=' + this.getToken(), {}, new RequestOptions({ headers: headers }))
+            .get('http://localhost:8080/api/v1/user?token=' + this.getToken(), { headers: headers })
             .map(function (res) { return res.json(); });
     };
+    AuthService.prototype.createAuthorizationHeader = function () {
+        var headers = new Headers();
+        headers.append('x-access-token', this.getToken());
+        headers.append('Content-Type', 'application/json');
+        return headers;
+    };
     AuthService.prototype.getToken = function () {
+        console.log(localStorage.getItem('token'));
         return localStorage.getItem('token');
     };
     AuthService.prototype.logout = function () {
