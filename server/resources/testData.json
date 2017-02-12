@@ -144,8 +144,8 @@
   "polls": [
     {
       "pollID": "1234",
-      "title": "Full Renewable Energy",
-      "description": "100% Renewables in 2020",
+      "title": "Invest in Green Energy",
+      "description": "Increase the potential of Green energy by lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"",
       "creationDate": 1486655353000,
       "dueDate": 1486911600000,
       "domain": "energy",
@@ -162,11 +162,11 @@
     },
     {
       "pollID": "2222",
-      "title": "Full Renewable Energy",
-      "description": "100% Renewables in 2020",
+      "title": "Liberalization of health care",
+      "description": "Do you think lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
       "creationDate": 1486655353000,
-      "dueDate": 1486911600000,
-      "domain": "energy",
+      "dueDate": 1488346910000,
+      "domain": "health care",
       "options": [
         {
           "option": "yes",
@@ -180,10 +180,10 @@
     },
     {
       "pollID": "3333",
-      "title": "Full Renewable Energy",
-      "description": "100% Renewables in 2020",
+      "title": "National Children's Hospital",
+      "description": "Plans to rebuild the Major Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam",
       "creationDate": 1486655353000,
-      "dueDate": 1486911600000,
+      "dueDate": 1487742110000,
       "domain": "energy",
       "options": [
         {
@@ -192,35 +192,6 @@
         },
         {
           "option": "no",
-          "votes": []
-        }
-      ]
-    },
-    {
-      "pollID": "9876",
-      "title": "Next President",
-      "description": "Who is going to be the new president",
-      "creationDate": 1486655353000,
-      "dueDate": 1486911600000,
-      "options": [
-        {
-          "option": "Valentin",
-          "votes": []
-        },
-        {
-          "option": "Albert-Martijn",
-          "votes": []
-        },
-        {
-          "option": "Herman",
-          "votes": []
-        },
-        {
-          "option": "Giorgos",
-          "votes": []
-        },
-        {
-          "option": "Nikhil",
           "votes": []
         }
       ]
