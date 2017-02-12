@@ -34,7 +34,6 @@ export class MyApp {
       { title: 'VotePage', component: VotePage },
       { title: 'HistoryPage', component: HistoryPage },
     ];
-
   }
 
   initializeApp() {

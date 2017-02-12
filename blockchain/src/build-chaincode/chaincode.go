@@ -58,12 +58,18 @@ func (t *Chaincode) Invoke(stub shim.ChaincodeStubInterface, functionName string
 
 		return nil, nil
 	} else if functionName == "castVoteByPoll" {
-
 		invokeAndQuery.CastVoteForPoll(stub, args[0], args[1])
 
 		return nil, nil
-	}
+	} else if functionName == "retrieveVote" {
+		invokeAndQuery.RetrieveVote(stub, args[0])
 
+		return nil, nil
+	} else if functionName == "delegateVote" {
+		invokeAndQuery.DelegateVote(stub, args[0], args[1])
+
+		return nil, nil
+	}
 
 	return nil, errors.New("Received unknown invoke function name")
 }

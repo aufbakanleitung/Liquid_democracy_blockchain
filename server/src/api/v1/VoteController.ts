@@ -1,25 +1,25 @@
-import {Get, JsonController, Param, Req, UseBefore} from 'routing-controllers';
+import {Get, JsonController, Param, Req, UseBefore, Post} from 'routing-controllers';
 import {JSONWebToken} from '../../utils/JSONWebToken';
 import {UserAuthenticatorMiddleware} from '../../middleware/UserAuthenticatorMiddleware';
 import {BlockchainClient} from '../../blockchain/client/blockchainClient';
 import {Container} from 'typedi';
 
-@JsonController('/users')
+@JsonController('/votes')
 @UseBefore(UserAuthenticatorMiddleware)
 export class VoteController {
   private blockchainClient: BlockchainClient = Container.get(BlockchainClient);
 
-  @Get('/')
-  public getAllUsers(@Req() request: any): any {
+  @Post('/delegate/:delegatedUserID/:pollID')
+  public delegateVote(@Param('delegatedUserID') delegatedUserID: string, @Param('pollID') pollID: string, @Req() request: any): any {
     let enrollmentID = new JSONWebToken(request).getUserID();
 
-    return this.blockchainClient.query('getAllUsers', [], enrollmentID);
+    return this.blockchainClient.invoke('delegateVote', [delegatedUserID, pollID], enrollmentID);
   }
 
-  @Get('/:id')
-  public getUserByID(@Param('id') userID: string, @Req() request: any): any {
+  @Post('/:voteID/retrieve')
+  public retrieveVote(@Param('voteID') voteID: string, @Req() request: any): any {
     let enrollmentID = new JSONWebToken(request).getUserID();
 
-    return this.blockchainClient.query('getUserByID', [userID], enrollmentID);
+    return this.blockchainClient.invoke('retrieveVote', [voteID], enrollmentID);
   }
 }

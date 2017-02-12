@@ -77,6 +77,68 @@
           "value": "bill"
         }
       ]
+    },
+    {
+      "userID": "aron",
+      "username": "aron",
+      "password": "passw0rd",
+      "address": "Groningen",
+      "email": "aron@blockmail.com",
+      "phoneNumber": "0031 6 0000000",
+      "expertiseDomains": [
+        "finance",
+        "security"
+      ],
+      "domainDelegations": [],
+      "votes": [],
+      "attributes": [
+        {
+          "name": "userID",
+          "value": "aron"
+        }
+      ]
+    },
+    {
+      "userID": "jane",
+      "username": "jane",
+      "password": "passw0rd",
+      "address": "Groningen",
+      "email": "jane@blockmail.com",
+      "phoneNumber": "0031 6 0000000",
+      "expertiseDomains": [
+        "finance",
+        "transport",
+        "tex"
+      ],
+      "domainDelegations": [],
+      "votes": [],
+      "attributes": [
+        {
+          "name": "userID",
+          "value": "jane"
+        }
+      ]
+    },
+    {
+      "userID": "michele",
+      "username": "michele",
+      "password": "passw0rd",
+      "address": "Groningen",
+      "email": "michele@blockmail.com",
+      "phoneNumber": "0031 6 0000000",
+      "expertiseDomains": [
+        "finance",
+        "agriculture",
+        "Security"
+      ],
+      "domainDelegations": [],
+      "votes": [],
+      "attributes": [
+        {
+          "name": "userID",
+          "value": "michele"
+        }
+      ]
     }
   ],
   "polls": [
@@ -99,9 +161,45 @@
       ]
     },
     {
+      "pollID": "2222",
+      "title": "Full Renewable Energy",
+      "description": "100% Renewables in 2020",
+      "creationDate": 1486655353000,
+      "dueDate": 1486911600000,
+      "domain": "energy",
+      "options": [
+        {
+          "option": "yes",
+          "votes": []
+        },
+        {
+          "option": "no",
+          "votes": []
+        }
+      ]
+    },
+    {
+      "pollID": "3333",
+      "title": "Full Renewable Energy",
+      "description": "100% Renewables in 2020",
+      "creationDate": 1486655353000,
+      "dueDate": 1486911600000,
+      "domain": "energy",
+      "options": [
+        {
+          "option": "yes",
+          "votes": []
+        },
+        {
+          "option": "no",
+          "votes": []
+        }
+      ]
+    },
+    {
       "pollID": "9876",
       "title": "Next President",
-      "description": "bla",
+      "description": "Who is going to be the new president",
       "creationDate": 1486655353000,
       "dueDate": 1486911600000,
       "options": [
