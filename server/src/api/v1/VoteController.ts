@@ -1,4 +1,4 @@
-import {Get, JsonController, Param, Req, UseBefore, Post} from 'routing-controllers';
+import {JsonController, Param, Req, UseBefore, Post} from 'routing-controllers';
 import {JSONWebToken} from '../../utils/JSONWebToken';
 import {UserAuthenticatorMiddleware} from '../../middleware/UserAuthenticatorMiddleware';
 import {BlockchainClient} from '../../blockchain/client/blockchainClient';

@@ -151,17 +151,17 @@
     {
       "pollID": "1234",
       "title": "Invest in Green Energy",
-      "description": "Increase the potential of Green energy by lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+      "description": "Should the EU green energy targets be reached by government projects, or should the emphasis be on marked forces by subsidizing household solar panels",
       "creationDate": 1486655353000,
       "dueDate": 1486911600000,
       "domain": "energy",
       "options": [
         {
-          "option": "yes",
+          "option": "Green government projects",
           "votes": []
         },
         {
-          "option": "no",
+          "option": "Subsidizing green energy",
           "votes": []
         }
       ]
@@ -169,7 +169,7 @@
     {
       "pollID": "2222",
       "title": "Liberalization of health care",
-      "description": "Do you think lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+      "description": "Do you think it is the responsibility of the federal government to make sure all citizens have health care coverage or is it the responsibility of the individual",
       "creationDate": 1486655353000,
       "dueDate": 1488346910000,
       "domain": "health care",
@@ -187,7 +187,7 @@
     {
       "pollID": "3333",
       "title": "National Children's Hospital",
-      "description": "Plans to rebuild the Major Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullam",
+      "description": "Plans to rebuild the major National Children's Hospital in Amsterdam's north inner city have been hindered by fears of flooding. The community is considering relocating the project",
       "creationDate": 1486655353000,
       "dueDate": 1487742110000,
       "domain": "energy",
