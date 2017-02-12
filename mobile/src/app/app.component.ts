@@ -7,7 +7,7 @@ import { StatusBar } from 'ionic-native';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login-page/login-page';
 //import { VotePage } from '../pages/vote-page/vote-page';
-//import { DelegatePage } from '../pages/delegatepage/delegatepage';
+//import { DelegatePage } from '../pages/delegate-page/delegate-page';
 import { ProfilePage } from '../pages/profile-page/profile-page';
 import { HistoryPage } from '../pages/history-page/history-page';
 

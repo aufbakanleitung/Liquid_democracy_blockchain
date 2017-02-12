@@ -5,17 +5,22 @@ import { Login } from '../pages/login/login';
 import { ListPage } from '../pages/list/list';
 import { Page2 } from '../pages/page2/page2';
 import { ProfilePage } from '../pages/profile-page/profile-page';
-import { DelegatePage } from '../pages/delegatepage/delegate-page';
+import { DelegatePage } from '../pages/delegate-page/delegate-page';
+import { HistoryPage } from '../pages/history-page/history-page';
+import { ItemDetailsPage } from '../pages/item-details/item-details';
+import { VotePage } from '../pages/vote-page/vote-page';
 
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
     Page2,
     DelegatePage,
-    ProfilePage
+    HistoryPage,
+    ProfilePage,
     Login,
     ListPage,
+    ItemDetailsPage,
+    VotePage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -23,12 +28,14 @@ import { DelegatePage } from '../pages/delegatepage/delegate-page';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
     Page2,
-    DelegatePage
-    ProfilePage
+    DelegatePage,
+    HistoryPage,
+    ProfilePage,
     Login,
     ListPage,
+    ItemDetailsPage,
+    VotePage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 
