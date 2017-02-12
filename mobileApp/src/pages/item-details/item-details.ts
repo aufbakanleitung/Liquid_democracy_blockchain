@@ -21,20 +21,21 @@ export class ItemDetailsPage {
     this.getOne(navParams.get('id'));
   }
 
-  getOne(id: string){
-    // this.pollService.getOne(id)
-    //   .then(res => {
-    //       this.selectedItem = res || {};
-    // });
+  public getOne(id: string){
+    this.pollService.getOne(id)
+      .then(res => {
+        console.log(res);
+          this.selectedItem = res || {};
+    });
   }
 
-  vote(event, item){
+  public vote(event, item){
     this.navCtrl.push(VotePage, {
         item: this.selectedItem
     });
   }
 
-  delegate(event, item){
+  public delegate(event, item){
     this.navCtrl.push(DelegatePage, {
         pollId: this.selectedItem.id
     });

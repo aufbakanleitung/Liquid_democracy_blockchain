@@ -5,12 +5,6 @@ import {AuthService} from '../../providers/auth-service';
 import {ItemDetailsPage} from '../item-details/item-details';
 import {ProfilePage} from '../profile-page/profile-page';
 
-/*
-  Generated class for the List page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html',
@@ -36,7 +30,7 @@ export class ListPage {
 
   itemTapped(event, item) {
     this.navCtrl.push(ItemDetailsPage, {
-      id: item.id
+      id: item.pollID
     });
   }
 
