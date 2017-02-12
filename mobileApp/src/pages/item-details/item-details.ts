@@ -2,17 +2,15 @@ import { Component } from '@angular/core';
 
 import { NavController, NavParams } from 'ionic-angular';
 import {PollService} from '../../providers/poll-service';
-
-import {ListPage} from '../list/list';
-
 import {VotePage} from '../vote-page/vote-page';
-
 import {DelegatePage} from '../delegate-page/delegate-page';
 import { ProfilePage } from '../profile-page/profile-page';
+import {AuthService} from '../../providers/auth-service';
 
 
 @Component({
-  templateUrl: 'item-details.html'
+  templateUrl: 'item-details.html',
+  providers : [PollService, AuthService]
 })
 export class ItemDetailsPage {
   selectedItem: any;

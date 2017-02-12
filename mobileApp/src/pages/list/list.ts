@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {PollService} from '../../providers/poll-service';
 import {AuthService} from '../../providers/auth-service';
+import {ItemDetailsPage} from '../item-details/item-details';
+import {ProfilePage} from '../profile-page/profile-page';
 
 /*
   Generated class for the List page.
@@ -33,9 +35,9 @@ export class ListPage {
   items: Array<{title: string, category: string}>;
 
   itemTapped(event, item) {
-    // this.navCtrl.push(ItemDetailsPage, {
-    //   id: item.id
-    // });
+    this.navCtrl.push(ItemDetailsPage, {
+      id: item.id
+    });
   }
 
   MyCtrl($scope, $ionicHistory) {
@@ -45,9 +47,9 @@ export class ListPage {
   }
 
   gotoProfile(event, item){
-    // this.navCtrl.push(ProfilePage, {
-    //   item: item
-    // });
+    this.navCtrl.push(ProfilePage, {
+      item: item
+    });
   }
 
 }
