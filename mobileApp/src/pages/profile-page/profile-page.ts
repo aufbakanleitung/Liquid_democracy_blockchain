@@ -11,6 +11,4 @@ export class ProfilePage {
     constructor(private authService: AuthService) {
         this.profile = authService.currentUser;
     }
-
-
 }
