@@ -42,10 +42,10 @@ export class PollService {
     })
   }
 
-  public vote(id: string, option: string) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
-    return this.http.post('http://localhost:8080/api/v1/poll/vote', {option: option}, {headers: this.authenticationHeaders});
+  public vote(pollID: string, option: string) {
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost:8080/api/v1/polls/' + pollID +'/vote', {option: option}, {headers: this.authenticationHeaders})
+        .subscribe();
+    })
   }
 }

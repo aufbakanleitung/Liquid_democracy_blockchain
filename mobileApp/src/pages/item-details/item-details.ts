@@ -24,12 +24,16 @@ export class ItemDetailsPage {
   public getOne(id: string){
     this.pollService.getOne(id)
       .then(res => {
-        console.log(res);
           this.selectedItem = res || {};
     });
   }
 
   public vote(event, item){
+    this.pollService.vote("bla", "bla")
+      .then(res => {
+        console.log(res);
+        this.
+      })
     this.navCtrl.push(VotePage, {
         item: this.selectedItem
     });
