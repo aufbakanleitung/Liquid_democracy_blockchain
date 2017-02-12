@@ -1,52 +1,55 @@
-import { Component } from '@angular/core';
-
-import { NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
 import {PollService} from '../../providers/poll-service';
 import {VotePage} from '../vote-page/vote-page';
 import {DelegatePage} from '../delegate-page/delegate-page';
-import { ProfilePage } from '../profile-page/profile-page';
+import {ProfilePage} from '../profile-page/profile-page';
 import {AuthService} from '../../providers/auth-service';
+import {VoteService} from '../../providers/vote-service';
 
 
 @Component({
   templateUrl: 'item-details.html',
-  providers : [PollService, AuthService]
+  providers:   [PollService, AuthService, VoteService]
 })
 export class ItemDetailsPage {
-  selectedItem: any;
-  //navCtrl: NavController;
+  public selectedItem: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private pollService: PollService) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private pollService: PollService,
+              private voteService: VoteService) {
     this.selectedItem = {};
-    this.getOne(navParams.get('id'));
+    this.getPollByID(navParams.get('id'));
   }
 
-  public getOne(id: string){
-    this.pollService.getOne(id)
+  public getPollByID(id: string) {
+    this.pollService.getPollByID(id)
       .then(res => {
-          this.selectedItem = res || {};
-    });
+        this.selectedItem = res || {};
+        console.log(this.selectedItem);
+      });
   }
 
-  public vote(event, item){
-    this.pollService.vote("bla", "bla")
+  public goToVote() {
+    this.voteService.castVote("bla", "bla")
       .then(res => {
         console.log(res);
-      })
+      });
     this.navCtrl.push(VotePage, {
-        item: this.selectedItem
+      item: this.selectedItem
     });
   }
 
-  public delegate(event, item){
+  public goToDelegate() {
     this.navCtrl.push(DelegatePage, {
-        pollId: this.selectedItem.id
+      pollId: this.selectedItem.id
     });
   }
 
-    gotoProfile(event, item){
-        this.navCtrl.push(ProfilePage, {
-            item: item
-        });
-      }
+  public gotoProfile(item) {
+    this.navCtrl.push(ProfilePage, {
+      item: item
+    });
+  }
 }

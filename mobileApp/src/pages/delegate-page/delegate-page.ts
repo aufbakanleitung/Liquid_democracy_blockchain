@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { ProfilePage } from '../profile-page/profile-page';
-import {AuthService} from '../../providers/auth-service';
+import {Component} from '@angular/core';
+import {ProfilePage} from '../profile-page/profile-page';
 import {NavController} from 'ionic-angular';
 import {NavParams, ToastController} from 'ionic-angular/index';
+import {VoteService} from '../../providers/vote-service';
+import {UserService} from '../../providers/users-service';
 
 
 @Component({
@@ -12,34 +13,39 @@ export class DelegatePage {
   private pollId: string;
   private delegated: boolean;
   private selectedUser: string;
+  public allUsers: any;
 
-  constructor(private authService: AuthService, private navParams: NavParams, private toastCtrl: ToastController, public navCtrl: NavController,) {
-    this.loadUsers();
+  constructor(private voteService: VoteService,
+              private navParams: NavParams,
+              private toastCtrl: ToastController,
+              private userService: UserService,
+              public navCtrl: NavController,) {
+    this.getAllUsers();
     this.pollId = navParams.get('pollId');
   }
 
-  loadUsers() {
-    /*
-    this.authService.getAllUsers().subscribe(users => {
-      this.users = users
-    });
-    */
+  public getAllUsers() {
+    this.userService.getAllUsers()
+      .then(res => {
+        this.allUsers = res || {};
+        console.log(this.allUsers);
+      });
   }
 
-  delegate() {
-    this.authService.delegate(this.selectedUser, this.pollId).subscribe(res => {
+  public delegateVote() {
+    this.voteService.delegateVote(this.selectedUser, this.pollId).then(res => {
       this.delegated = true;
-      let toast = this.toastCtrl.create({
-        message: 'Your vote has been delegated.',
+      let toast      = this.toastCtrl.create({
+        message:  'Your vote has been delegated.',
         duration: 3000
       });
       toast.present();
     });
   }
 
-    gotoProfile(event, item){
+  public gotoProfile(event, item) {
     this.navCtrl.push(ProfilePage, {
-        item: item
+      item: item
     });
   }
 }

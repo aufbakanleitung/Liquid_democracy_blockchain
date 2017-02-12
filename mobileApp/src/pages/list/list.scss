@@ -1,4 +1,5 @@
-.list-page {}
+.list-page {
+}
 
 //Login page
 .logo-img {
@@ -20,6 +21,29 @@
   }
 }
 
+.item-input ion-input {
+  padding-left: 10px;
+}
+
+.toolbar-ios ion-title {
+  padding-top: 10px;
+}
+
+.item-ios {
+  padding-left: 20px;
+  margin-left: 0px;
+  background-color: #f0f0f0;
+  border-top: 1px solid #c8c7cc;
+}
+
+.list-ios .item-block .item-inner {
+  border-bottom: none;
+}
+
+.scroll-content {
+  background-color: #606060
+}
+
 #sign-in {
   text-align: center;
   button {
@@ -27,8 +51,9 @@
     width: 60%;
   }
 }
+
 .voting_wrapper {
-  button{
+  button {
     width: 60%;
   }
 }
@@ -36,6 +61,7 @@
 button.profile {
   float: right;
 }
+
 .poll-title {
   text-align: center;
 }
@@ -43,20 +69,24 @@ button.profile {
 #delegate {
   width: 50%;
 }
+
 #vote {
   width: 50%;
 }
-.toolbar-title{
+
+.toolbar-title {
   width: auto;
 }
 
-.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default{
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
   color: #fff;
 }
-.search_button:before{
+
+.search_button:before {
   content: url("../../assets/icon/icon_search.svg");
 }
-.button-ios{
+
+.button-ios {
   background-color: transparent;
   float: right;
 }

@@ -17,7 +17,6 @@ func CreateVotesForPoll(stub shim.ChaincodeStubInterface, poll entities.Poll) er
 
 	for _, user := range users {
 		delegation := []string{}
-
 		if !reflect.DeepEqual(user.DomainDelegations, []entities.DomainDelegation{}) {
 			for _, userDelegation := range user.DomainDelegations {
 
@@ -106,7 +105,6 @@ func DelegateVote(stub shim.ChaincodeStubInterface, delegatedUserID string, poll
 }
 
 func RetrieveVote(stub shim.ChaincodeStubInterface, voteID string) error {
-
 	users, getAllUsersError := util.GetAllUsers(stub)
 	if getAllUsersError != nil {
 		return getAllUsersError

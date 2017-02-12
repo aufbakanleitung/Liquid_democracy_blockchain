@@ -18,19 +18,19 @@
       (ionCancel)="onCancel($event)">
     </ion-searchbar>
  <div>
-    
-    
+
+
     <div class="voting_wrapper_vote_page">
         <ion-list radio-group [(ngModel)]="selectedUser">
             <ion-item *ngFor="let user of users">
                 <ion-img></ion-img>
                 <ion-label>{{user.firstName}} {{user.lastName}}</ion-label>
-                <ion-radio value="{{user.userId}}"></ion-radio>
+                <ion-radio value="{{user.userID}}"></ion-radio>
             </ion-item>
         </ion-list>
 
         <span>
-            <button id="delegate" ion-button color="primary" (click)="delegate()" [disabled]="delegated">Delegate</button>
+            <button id="delegate" ion-button color="primary" (click)="delegateVote()" [disabled]="delegated">Delegate</button>
         </span>
     </div>
   </div>

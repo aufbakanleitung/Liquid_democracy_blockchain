@@ -13,7 +13,7 @@ export class PollService {
     this.authenticationHeaders = authService.createAuthorizationHeader()
   }
 
-  public getList(): Promise<any> {
+  public getAllPolls(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.get('http://localhost:8080/api/v1/polls', {headers: this.authenticationHeaders})
         .subscribe((data: any) => {
@@ -28,7 +28,7 @@ export class PollService {
     });
   }
 
-  public getOne(id: string) {
+  public getPollByID(id: string) {
     return new Promise((resolve, reject) => {
       this.http.get('http://localhost:8080/api/v1/polls/' + id, {headers: this.authenticationHeaders})
         .subscribe((data: any) => {
@@ -39,13 +39,6 @@ export class PollService {
             return reject("error");
           }
         });
-    })
-  }
-
-  public vote(pollID: string, option: string) {
-    return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:8080/api/v1/polls/' + pollID +'/vote', {option: option}, {headers: this.authenticationHeaders})
-        .subscribe();
     })
   }
 }
