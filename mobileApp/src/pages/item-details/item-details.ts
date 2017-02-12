@@ -32,18 +32,15 @@ export class ItemDetailsPage {
   }
 
   public goToVote() {
-    this.voteService.castVote("bla", "bla")
-      .then(res => {
-        console.log(res);
-      });
     this.navCtrl.push(VotePage, {
       item: this.selectedItem
     });
   }
 
   public goToDelegate() {
+    console.log(this.selectedItem);
     this.navCtrl.push(DelegatePage, {
-      pollId: this.selectedItem.id
+      pollId: this.selectedItem.pollID
     });
   }
 

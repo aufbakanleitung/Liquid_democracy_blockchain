@@ -4,29 +4,26 @@ import {NavParams, NavController, ToastController} from 'ionic-angular/index';
 
 import {ProfilePage} from '../profile-page/profile-page';
 import {VoteService} from '../../providers/vote-service';
+import {AuthService} from '../../providers/auth-service';
 
 
 @Component({
-  templateUrl: 'vote-page.html'
+  templateUrl: 'vote-page.html',
+  providers: [VoteService, AuthService, PollService]
 })
 export class VotePage {
   private voting: string;
   private poll: any;
   private voted: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private voteService: VoteService, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private voteService: VoteService) {
     this.poll = navParams.get('item');
     console.log(this.poll)
   }
 
   public castVote() {
-    this.voteService.castVote(this.poll.id, this.voting).then(res => {
+    this.voteService.castVote(this.poll.pollID, this.voting).then(res => {
       this.voted = true;
-      let toast  = this.toastCtrl.create({
-        message:  'Your vote has been registered to the blockchain.',
-        duration: 3000
-      });
-      toast.present();
     });
   }
 

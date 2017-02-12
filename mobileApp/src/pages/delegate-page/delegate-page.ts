@@ -4,10 +4,13 @@ import {NavController} from 'ionic-angular';
 import {NavParams, ToastController} from 'ionic-angular/index';
 import {VoteService} from '../../providers/vote-service';
 import {UserService} from '../../providers/users-service';
+import {PollService} from '../../providers/poll-service';
+import {AuthService} from '../../providers/auth-service';
 
 
 @Component({
-  templateUrl: 'delegate-page.html'
+  templateUrl: 'delegate-page.html',
+  providers:   [VoteService, AuthService, PollService, UserService]
 })
 export class DelegatePage {
   private pollId: string;
@@ -25,21 +28,20 @@ export class DelegatePage {
   }
 
   public getAllUsers() {
+    console.log("getting all users");
     this.userService.getAllUsers()
       .then(res => {
+        console.log(res);
         this.allUsers = res || {};
         console.log(this.allUsers);
       });
   }
 
   public delegateVote() {
+    console.log(this.selectedUser);
+    console.log(this.pollId);
     this.voteService.delegateVote(this.selectedUser, this.pollId).then(res => {
-      this.delegated = true;
-      let toast      = this.toastCtrl.create({
-        message:  'Your vote has been delegated.',
-        duration: 3000
-      });
-      toast.present();
+      // this.voted = true;
     });
   }
 

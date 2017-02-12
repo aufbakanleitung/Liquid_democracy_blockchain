@@ -11,20 +11,13 @@
 </ion-header>
 
 <ion-content>
-    <ion-searchbar
-      [(ngModel)]="myInput"
-      [showCancelButton]="shouldShowCancel"
-      (ionInput)="onInput($event)"
-      (ionCancel)="onCancel($event)">
-    </ion-searchbar>
+    <ion-searchbar [(ngModel)]="myInput"></ion-searchbar>
  <div>
-
-
     <div class="voting_wrapper_vote_page">
         <ion-list radio-group [(ngModel)]="selectedUser">
-            <ion-item *ngFor="let user of users">
+            <ion-item *ngFor="let user of allUsers">
                 <ion-img></ion-img>
-                <ion-label>{{user.firstName}} {{user.lastName}}</ion-label>
+                <ion-label>{{user.name}}</ion-label>
                 <ion-radio value="{{user.userID}}"></ion-radio>
             </ion-item>
         </ion-list>

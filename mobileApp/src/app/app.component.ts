@@ -25,11 +25,10 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'ProfilePage', component: ProfilePage },
-      { title: 'VotePage', component: VotePage },
-      { title: 'DelegatePage', component: DelegatePage },
-      { title: 'ListPage', component: ListPage },
-      { title: 'HistoryPage', component: HistoryPage },
+      { title: 'Profile', component: ProfilePage },
+      { title: 'Polls', component: ListPage },
+      { title: 'History of Voting', component: HistoryPage  }
+      // { title: 'Delegates', component: DelegatesPage }
     ];
   }
 
@@ -37,7 +36,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
+      // StatusBar.styleDefault();
       Splashscreen.hide();
     });
   }

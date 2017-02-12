@@ -13,11 +13,18 @@ export class UserService {
   constructor(private http: Http, private authService: AuthService) {
     this.authenticationHeaders = authService.createAuthorizationHeader()
   }
+
   public getAllUsers() {
-    return new Promise(() => {
-      this.http
-        .get('http://localhost:8080/api/v1/users', {headers: this.authenticationHeaders} )
-        .subscribe(res => res.json());
+    return new Promise((resolve, reject) => {
+      this.http.get('http://localhost:8080/api/v1/users', {headers: this.authenticationHeaders})
+        .subscribe((data: any) => {
+          let dataJSON = JSON.parse(data._body);
+          if (dataJSON != null) {
+            return resolve(dataJSON);
+          } else {
+            return reject("error");
+          }
+        });
     })
   }
 }

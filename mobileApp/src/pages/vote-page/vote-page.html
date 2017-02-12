@@ -15,18 +15,18 @@
     <p>
         <h2>{{poll.title}}</h2>
         <p>{{poll.description}}</p>
-    {{poll.category}} - {{poll.endDate | date}}
+    {{poll.domain}} - {{poll.dueDate | date}}
     <div>
         <ion-list radio-group [(ngModel)]="voting">
           <ion-item *ngFor="let option of poll.options">
-            <ion-label>{{option}}</ion-label>
-            <ion-radio value="{{option}}"></ion-radio>
+            <ion-label>{{option.option}}</ion-label>
+            <ion-radio value="{{option.option}}"></ion-radio>
           </ion-item>
         </ion-list>
     </div>
     <div class="voting_wrapper_vote_page">
         <span>
-            <button id="vote" ion-button color="primary" (click)="finalVote()" [disabled]="voted">Vote</button>
+            <button id="vote" ion-button color="primary" (click)="castVote()" [disabled]="voted">Vote</button>
         </span>
     </div>
   </div>
