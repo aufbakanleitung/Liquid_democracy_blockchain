@@ -3,6 +3,7 @@
     {
       "userID": "john",
       "username": "john",
+      "name" : "John Doe",
       "password": "passw0rd",
       "address": "Groningen",
       "email": "john@blockmail.com",
@@ -29,6 +30,7 @@
     {
       "userID": "mary",
       "username": "mary",
+      "name" : "Mary Jones",
       "password": "passw0rd",
       "address": "Amsterdam",
       "email": "mary@chainmail.com",
@@ -55,6 +57,7 @@
     {
       "userID": "bill",
       "username": "bill",
+      "name" : "Bill Kane",
       "password": "passw0rd",
       "address": "Brussels",
       "email": "bill@chainmail.com",
@@ -81,6 +84,7 @@
     {
       "userID": "aron",
       "username": "aron",
+      "name" : "Aron Kayle",
       "password": "passw0rd",
       "address": "Groningen",
       "email": "aron@blockmail.com",
@@ -101,6 +105,7 @@
     {
       "userID": "jane",
       "username": "jane",
+      "name" : "Jane Doe",
       "password": "passw0rd",
       "address": "Groningen",
       "email": "jane@blockmail.com",
@@ -122,6 +127,7 @@
     {
       "userID": "michele",
       "username": "michele",
+      "name" : "Michele Stark",
       "password": "passw0rd",
       "address": "Groningen",
       "email": "michele@blockmail.com",
@@ -145,7 +151,7 @@
     {
       "pollID": "1234",
       "title": "Invest in Green Energy",
-      "description": "Increase the potential of Green energy by lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"",
+      "description": "Increase the potential of Green energy by lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
       "creationDate": 1486655353000,
       "dueDate": 1486911600000,
       "domain": "energy",

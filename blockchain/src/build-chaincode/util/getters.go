@@ -94,3 +94,23 @@ func GetAllUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
 
 	return users, nil
 }
+
+func GetPollResults(stub shim.ChaincodeStubInterface, pollID string) (map[string]float64, error) {
+
+	poll, err := GetPollByID(stub, pollID)
+	if err != nil {
+		return nil, err
+	}
+
+	votesForOption := make(map[string]int)
+	for _, option := range poll.Options {
+		votesForOption[option] = len(option)
+	}
+
+	return nil, nil
+}
+
+func GetDelegatedUserPerPoll(stub shim.ChaincodeStubInterface, pollID string) (entities.User, error) {
+
+	return nil, nil
+}

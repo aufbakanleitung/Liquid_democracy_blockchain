@@ -26,7 +26,7 @@ export class TestData {
   private writeTestDataToLedger(testData: any): Promise<any>  {
     let users: User[] = [];
     testData.users.forEach((user: any) => {
-      users.push(new User(user.userID, user.password, user.username, user.address, user.email, user.phoneNumber, user.expertiseDomains, user.domainDelegations, user.votes));
+      users.push(new User(user.userID, user.password, user.username, user.name, user.address, user.email, user.phoneNumber, user.expertiseDomains, user.domainDelegations, user.votes));
     });
     testData.users = users;
 

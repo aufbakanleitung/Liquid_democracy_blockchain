@@ -12,6 +12,7 @@ export class User {
   public constructor(private _userID: string,
                      password: string,
                      private _username: string,
+                     private _name: string,
                      private _address: string,
                      private _email: string,
                      private _phoneNumber: string,
@@ -36,6 +37,10 @@ export class User {
 
   public get username(): string {
     return this._username;
+  }
+
+  public get name(): string {
+    return this._name;
   }
 
   public get address(): string {
@@ -68,6 +73,7 @@ export class User {
       'salt':              this.salt,
       'hash':              this.hash,
       'username':          this.username,
+      'name':              this.name,
       'address':           this.address,
       'email':             this.email,
       'phoneNumber':       this.phoneNumber,
