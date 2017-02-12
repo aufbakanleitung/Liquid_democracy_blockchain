@@ -32,7 +32,6 @@ export class ItemDetailsPage {
     this.pollService.vote("bla", "bla")
       .then(res => {
         console.log(res);
-        this.
       })
     this.navCtrl.push(VotePage, {
         item: this.selectedItem
