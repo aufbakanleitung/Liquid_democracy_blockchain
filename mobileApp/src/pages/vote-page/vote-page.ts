@@ -17,9 +17,9 @@ export class VotePage {
     this.poll = navParams.get('item');
     console.log(this.poll)
   }
-  
+
   finalVote() {
-    this.pollService.vote(this.poll.id, this.voting).subscribe(res => {
+    this.pollService.vote(this.poll.id, this.voting).then(res => {
       this.voted = true;
       let toast = this.toastCtrl.create({
         message: 'Your vote has been registered to the blockchain.',
