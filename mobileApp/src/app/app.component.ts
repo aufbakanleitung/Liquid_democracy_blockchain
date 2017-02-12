@@ -25,13 +25,10 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Login', component: Login },
-      { title: 'MyApp', component: MyApp },
-      { title: 'DelegatePage', component: DelegatePage },
       { title: 'ProfilePage', component: ProfilePage },
-      { title: 'ListPage', component: ListPage },
-      { title: 'ItemDetailsPage', component: ItemDetailsPage },
       { title: 'VotePage', component: VotePage },
+      { title: 'DelegatePage', component: DelegatePage },
+      { title: 'ListPage', component: ListPage },
       { title: 'HistoryPage', component: HistoryPage },
     ];
   }
