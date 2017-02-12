@@ -5,6 +5,7 @@ import (
 	"errors"
 	"encoding/json"
 	"build-chaincode/entities"
+	"fmt"
 )
 
 func GetCurrentBlockchainUser(stub shim.ChaincodeStubInterface) (entities.User, error) {
@@ -97,20 +98,39 @@ func GetAllUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
 
 func GetPollResults(stub shim.ChaincodeStubInterface, pollID string) (map[string]float64, error) {
 
-	poll, err := GetPollByID(stub, pollID)
-	if err != nil {
-		return nil, err
-	}
-
-	votesForOption := make(map[string]int)
-	for _, option := range poll.Options {
-		votesForOption[option] = len(option)
-	}
-
+	//poll, err := GetPollByID(stub, pollID)
+	//if err != nil {
+	//	return nil, err
+	//}
+	//
+	//votesForOption := make(map[string]int)
+	//for _, option := range poll.Options {
+	//	votesForOption[option] = len(option)
+	//}
+	//
 	return nil, nil
 }
 
-func GetDelegatedUserPerPoll(stub shim.ChaincodeStubInterface, pollID string) (entities.User, error) {
+func GetAllDelegatedUsers(stub shim.ChaincodeStubInterface) ([]entities.User, error) {
 
-	return nil, nil
+	currentUser, err := GetCurrentBlockchainUser(stub)
+	if err != nil {
+		return nil, err
+	}
+	fmt.Println("current USer", currentUser)
+	delegatedUsers := []entities.User{}
+	for _, vote := range currentUser.Votes {
+		for _, delegation := range vote.DelegatedTo {
+			fmt.Println("delegation : ", delegation)
+			delegatedUser, err := GetUserByID(stub, delegation)
+			if err != nil {
+				return nil, err
+			}
+			fmt.Println("delegated user : ", delegatedUser)
+			delegatedUsers = append(delegatedUsers, delegatedUser)
+			fmt.Println("delegated users ------> : ", delegatedUsers)
+		}
+	}
+
+	return delegatedUsers, nil
 }

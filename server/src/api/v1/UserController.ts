@@ -16,6 +16,13 @@ export class UserController {
         return this.blockchainClient.query('getAllUsers', [], enrollmentID);
     }
 
+    @Get('/delegated')
+    public getAllDelegatedUsers(@Req() request: any): any {
+        let enrollmentID = new JSONWebToken(request).getUserID();
+
+        return this.blockchainClient.query('getAllDelegatedUsers', [], enrollmentID);
+    }
+
     @Get('/:id')
     public getUserByID(@Param('id') userID: string, @Req() request: any): any {
         let enrollmentID = new JSONWebToken(request).getUserID();

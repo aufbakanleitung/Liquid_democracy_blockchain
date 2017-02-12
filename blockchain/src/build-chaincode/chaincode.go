@@ -132,6 +132,14 @@ func (t *Chaincode) GetQueryResult(stub shim.ChaincodeStubInterface, functionNam
 		}
 
 		return pollByID, nil
+	} else if functionName == "getAllDelegatedUsers" {
+		delegatedUsers, err := util.GetAllDelegatedUsers(stub)
+		if err != nil {
+			return nil, errors.New("could not retrieve polls with id: " + args[0] + ", reason: " + err.Error())
+		}
+
+		return delegatedUsers, nil
+		//	GetAllDelegatedUsers
 	}
 
 	return nil, errors.New("Received unknown query function name")
